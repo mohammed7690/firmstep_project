@@ -4,7 +4,7 @@ A developer test for firmstep.
 ## Installation & Setup
 This application has been tested using xampp. if you have xampp this should work perfectly.  
 To run this application you'll need to do some work (Don't worry, I made it easier for you).    
-Download this project in ZIP. and Extract it using 'WinRAR' by selecting 'Extract Here' option. if you don't have WinRAR, just double click the zip file and copy all the inner files and paste it inside a file with the same name as the zip file. without the zip extension.  
+Download this project in ZIP. and Extract it using 'WinRAR' by selecting 'Extract Here' option. if you don't have WinRAR, just double click the zip file and copy all the inner files and paste it inside a file with the same name as the zip file, without the zip extension.  
 In phpmyadmin page, i have left all the settings in default. so the user is 'root', host is 'localhost', and password is empty ''.    
 
 To create a database, run the following SQL script in phpmyadmin page:  
