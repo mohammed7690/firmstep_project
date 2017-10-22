@@ -38,7 +38,7 @@ VALUES
 
 Now you are ready to run the application :)    
 
-# chosen framework / solution
+## chosen framework / solution
 I have used:  
 PHP - To perform all the serverside tasks  
 javascript mainly the jQuery library - To deal with the frontend functionality.  
@@ -46,6 +46,6 @@ Bootstrap - For responsiveness, built-in elements and loads of CSS helpful class
 Attempted the MVC approach - To separate out the codes and to make it easily manageable.  
 Database usage - to store and retrieve data.    
 
-# For further Improvement
+## For further Improvement
 This Application can be improved by adding the delete and update functionalities. Due to limited time (Had few hours to work on this) I couldn't add those functionalities.  
 Dealing with security (SQL injection), and more form on form validation.
