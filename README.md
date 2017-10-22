@@ -3,30 +3,35 @@ A developer test for firmstep.
 
 ## Installation & Setup
 This application has been tested using xampp. if you have xampp this should work perfectly.  
-To run this application you'll need to do some work (Don't worry, I made it easier for you).  
+To run this application you'll need to do some work (Don't worry, I made it easier for you).    
+Download this project in ZIP. and Extract it using 'WinRAR' by selecting 'Extract Here' option. if you don't have WinRAR, just double click the zip file and copy all the inner files and paste it inside a file with the same name as the zip file. without the zip extension.  
 In phpmyadmin page, i have left all the settings in default. so the user is 'root', host is 'localhost', and password is empty ''.    
 
-To create a database, run the following SQL script in phpmyadmin page:
+To create a database, run the following SQL script in phpmyadmin page:  
+```
 CREATE DATABASE firmstep_db;
-
-After creating the database - go inside the database (very important!) by clicking the database name and run the following script after clicking on the sql tab:  
+```
+After creating the database - go inside the database **(very important!)** by clicking the database name and run the following script after clicking on the sql tab: 
+```
 CREATE TABLE firmstep_customer(  
-id int(11) NOT NULL AUTO_INCREMENT,  
-type varchar(255) NOT NULL,  
-name varchar(255) NOT NULL,  
-service varchar(255) NOT NULL,  
-queued_at varchar(255) NOT NULL,  
-PRIMARY KEY (id)  
+    id int(11) NOT NULL AUTO_INCREMENT,  
+    type varchar(255) NOT NULL,  
+    name varchar(255) NOT NULL,  
+    service varchar(255) NOT NULL,  
+    queued_at varchar(255) NOT NULL,  
+    PRIMARY KEY (id)  
 );    
-
+```
 Now create the service table:  
+```
 CREATE TABLE firmstep_services(  
-id int(11) NOT NULL AUTO_INCREMENT,  
-service varchar(255) NOT NULL,  
-PRIMARY KEY (id)  
+    id int(11) NOT NULL AUTO_INCREMENT,  
+    service varchar(255) NOT NULL,  
+    PRIMARY KEY (id)  
 );    
-
+```
 Now populate the table with the service data:  
+```
 INSERT INTO firmstep_services
     (service)
 VALUES
@@ -35,7 +40,7 @@ VALUES
     ('Council Tax'),
     ('Fly-tipping'),
     ('Missed Bin');
-
+```
 Now you are ready to run the application :)    
 
 ## chosen framework / solution
