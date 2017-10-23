@@ -8,13 +8,16 @@
         function getData(){
             require ("Credentials.php");
             //open database connection
-            mysql_connect($host, $user, $passwd) or die(mysql_error());
-            mysql_select_db($database);
-            $result = mysql_query("SELECT * FROM firmstep_customer") or die(mysql_error());
+            $connection = mysqli_connect($host, $user, $passwd, $database);
+//            mysql_connect($host, $user, $passwd) or die(mysql_error());
+            
+            //mysql_select_db($database);
+//            $result = mysql_query("SELECT * FROM firmstep_customer") or die(mysql_error());
+            $result = mysqli_query($connection, "SELECT * FROM firmstep_customer");
             $dataArray = array();
 
             //get the data from the database
-            while ($row = mysql_fetch_array($result)) {
+            while ($row = mysqli_fetch_array($result)) {
                 $id = $row[0];
                 $type = $row[1];
                 $name = $row[2];
@@ -27,20 +30,21 @@
             }
 
             //Close connection and return result.
-            mysql_close();
+//            mysql_close();
+            mysqli_close($connection);
             return $dataArray;
         }
         
         function getServiceData(){
             require ("Credentials.php");
             //open database connection
-            mysql_connect($host, $user, $passwd) or die(mysql_error());
-            mysql_select_db($database);
-            $result = mysql_query("SELECT * FROM firmstep_services") or die(mysql_error());
+            $connection = mysqli_connect($host, $user, $passwd, $database);
+            
+            $result = mysqli_query($connection, "SELECT * FROM firmstep_services");
             
             $dataArray = array();
             //get data from database
-            while($row = mysql_fetch_array($result))
+            while($row = mysqli_fetch_array($result))
             {
                 $id = $row[0];
                 $service = $row[1];
@@ -49,43 +53,48 @@
                 array_push($dataArray, $dataObj);
             }
             
-            mysql_close();
+            mysqli_close($connection);
             return $dataArray;
         }
         
         function getCurrentId(){
             require ("Credentials.php");
             //open database connection
-            mysql_connect($host, $user, $passwd) or die(mysql_error());
-            mysql_select_db($database);
-            $result = mysql_query("SHOW TABLE STATUS LIKE 'firmstep_customer'") or die(mysql_error());
-            $data = mysql_fetch_array($result)['Auto_increment'];
-            mysql_close();
+            $connection = mysqli_connect($host, $user, $passwd, $database);
+            
+            $result = mysqli_query($connection, "SHOW TABLE STATUS LIKE 'firmstep_customer'");
+            
+            $data = mysqli_fetch_array($result)['Auto_increment'];
+            
+            mysqli_close($connection);
             return $data;
         }
         
         function InsertGoods(firmstepCustomerEntities $customer){
+            require 'Credentials.php';
+            $connection = mysqli_connect($host, $user, $passwd, $database);
+            
             $query = sprintf("INSERT INTO firmstep_customer
                             (type, name, service, queued_at)
                             VALUES
                             ('%s', '%s', '%s', '%s')",
             //"mysql_real_escape_string" this escapes special characters in the sql statements 
-                            mysql_real_escape_string($customer->type),
-                            mysql_real_escape_string($customer->name),
-                            mysql_real_escape_string($customer->service),
-                            mysql_real_escape_string($customer->queued_at));
-            $this->PerformQuery($query);
+                            mysqli_real_escape_string($connection, $customer->type),
+                            mysqli_real_escape_string($connection, $customer->name),
+                            mysqli_real_escape_string($connection, $customer->service),
+                            mysqli_real_escape_string($connection, $customer->queued_at));
+            mysqli_query($connection, $query);
+            mysqli_close($connection);
 	   }
         
         function PerformQuery($query){
             //open connection and select database
             require 'Credentials.php';
-            mysql_connect($host, $user) or die(mysql_error());
-            mysql_select_db($database);
+            $connection = mysqli_connect($host, $user, $passwd, $database);
             
             //execute query and close connection
-            mysql_query($query) or die(mysql_error());
-            mysql_close();
+            mysqli_query($connection, $query);
+            mysqli_close($connection);
         }
     }
 ?>
