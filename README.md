@@ -56,4 +56,7 @@ Database usage - to store and retrieve data.
 
 ## For further Improvement
 This Application can be improved by adding the delete and update functionalities. Due to limited time (Had few hours to work on this) I couldn't add those functionalities.  
-Dealing with security (SQL injection), and more form on form validation.
+Dealing with security (SQL injection), and more form on form validation.  
+
+## Warnings
+Some deprecated codes in place. main ones are ' mysql_connect():' and ' mysql_real_escape_string():' will update them shortly.   
